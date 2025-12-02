@@ -37,5 +37,5 @@ def day2_part2(input):
 
 if __name__ == "__main__":
     data = open("input2.txt").read()
-    #day2_part1(data)
+    day2_part1(data)
     day2_part2(data)
