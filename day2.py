@@ -1,3 +1,5 @@
+import time
+
 def day2_part1(input):
     sumInvalidIds = 0
     for ids in input.split(','):
@@ -35,7 +37,31 @@ def day2_part2(input):
                     break
     print(sumInvalidIds)
 
+factors = [[1], [1], [1], [1,2], [1], [1,2,3], [1], [1,2,4], [1,3], [1,2,5]]
+def day2_part2_factors(input):
+    total = 0
+    for ids in input.split(','):# for each id range
+        lower = ids.strip().split('-')[0]
+        upper = ids.strip().split('-')[1]
+        for i in range(int(lower), int(upper)+1):
+            iChars = str(i) # convert to string
+            length = len(iChars)
+            if length == 1:
+                continue
+            for f in factors[length-1]:
+                c = iChars.count(iChars[0:f])
+                if c == length / f:
+                    total += i
+                    # print(i)
+                    break
+    print(total)
+            
 if __name__ == "__main__":
     data = open("input2.txt").read()
-    day2_part1(data)
+    #day2_part1(data)
+    timer = time.time()
     day2_part2(data)
+    print("Time to run:", time.time() - timer)
+    timer = time.time()
+    day2_part2_factors(data)
+    print("Time to run:", time.time() - timer)
