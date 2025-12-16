@@ -1,4 +1,5 @@
-
+import time
+import cProfile
 def day3_part1(input):
     d1 = 0
     d2 = 0
@@ -32,6 +33,8 @@ def day3_part2(input):
                 if int(choices[j]) > maxDigit:
                     maxDigit = int(choices[j])
                     subIndex = j
+                    if maxDigit == 9:
+                        break
             digits.append(str(maxDigit))
             index += subIndex + 1
             freeSlots -= subIndex
@@ -44,5 +47,10 @@ def day3_part2(input):
 
 if __name__ == "__main__":
     data = open("input3.txt").read()
-    day3_part1(data)
-    day3_part2(data)
+    #day3_part1(data)
+    # # calculate run time
+    # start_time = time.time()
+    # day3_part1(data)
+    # print(f"Part 1 run time: {time.time() - start_time} seconds")
+
+    cProfile.run('day3_part2(data)')

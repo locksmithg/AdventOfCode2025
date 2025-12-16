@@ -38,7 +38,6 @@ def day4_part2(lines):
         total += count
     print(total)
 
-
 if __name__ == "__main__":
     input = open("input4.txt").read()
     #day4_part1(input.splitlines())
